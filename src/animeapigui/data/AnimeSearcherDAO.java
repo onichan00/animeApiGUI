@@ -1,5 +1,6 @@
-package animeapigui.controllers;
+package animeapigui.data;
 
+import animeapigui.controllers.Controller;
 import animeapigui.models.Serie;
 import animeapigui.views.View;
 import org.json.*;
@@ -11,11 +12,11 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnimeSearcher extends Controller{
+public class AnimeSearcherDAO extends Controller {
     static List<Serie> searchResults;
 
 
-public AnimeSearcher(){
+public AnimeSearcherDAO(){
 }
 
     public static String link = "https://api.jikan.moe/v4/anime";
@@ -28,7 +29,7 @@ public AnimeSearcher(){
 
         client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(HttpResponse::body)
-                .thenApply(AnimeSearcher::parseSearch)
+                .thenApply(AnimeSearcherDAO::parseSearch)
                 .thenAccept(System.out::println)
                 .join();
 

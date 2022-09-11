@@ -1,6 +1,6 @@
 package animeapigui.controllers;
 
-import animeapigui.MainApplication;
+import animeapigui.data.AnimeSearcherDAO;
 import animeapigui.models.Serie;
 import animeapigui.views.SearchView;
 import animeapigui.views.View;
@@ -14,10 +14,10 @@ public class SearchController extends Controller{
     public Serie animeList;
     public List<Serie> anime;
     public ObservableList<Serie> observableList;
-    public AnimeSearcher animeSearcher;
+    public AnimeSearcherDAO animeSearcher;
 
     public SearchController(){
-         animeSearcher = new AnimeSearcher();
+         animeSearcher = new AnimeSearcherDAO();
 
         view = new SearchView();
 
@@ -30,7 +30,7 @@ public class SearchController extends Controller{
     }
 
     private void handleSearchKnop(){
-        AnimeSearcher.requestSearch(view.getSearchField().getText());
+        AnimeSearcherDAO.requestSearch(view.getSearchField().getText());
 
         anime = animeSearcher.getAll();
         observableList = FXCollections.observableArrayList(anime);
@@ -38,7 +38,7 @@ public class SearchController extends Controller{
 
     }
 
-    
+
 
     @Override
     public View getView() {

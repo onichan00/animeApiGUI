@@ -1,6 +1,5 @@
 package animeapigui;
 
-import animeapigui.controllers.AnimeSearcher;
 import animeapigui.controllers.Controller;
 import animeapigui.controllers.SearchController;
 import javafx.application.Application;
